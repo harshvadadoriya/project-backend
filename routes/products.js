@@ -23,16 +23,18 @@ router.get('/:id', getProduct, (req, res) => {
 
 // Creating one
 router.post('/', async (req, res) => {
-	const product = new Product({
-		name: req.body.name,
-		discountedPrice: req.body.discountedPrice,
-		originalPrice: req.body.originalPrice,
-		description: req.body.description,
-		quantity: req.body.quantity,
-		gender: req.body.gender,
-		category: req.body.category,
-	});
 	try {
+		const product = new Product({
+			image: req.body.image,
+			name: req.body.name,
+			discountedPrice: req.body.discountedPrice,
+			originalPrice: req.body.originalPrice,
+			description: req.body.description,
+			quantity: req.body.quantity,
+			gender: req.body.gender,
+			category: req.body.category,
+		});
+
 		const newProduct = await product.save();
 		res.status(201).json(newProduct);
 	} catch (err) {
